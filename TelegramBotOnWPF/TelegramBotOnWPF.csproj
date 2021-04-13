@@ -69,9 +69,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetTokenWindow.xaml.cs">
+      <DependentUpon>GetTokenWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MessageLog.cs" />
     <Compile Include="TGBotMessageClient.cs" />
     <Compile Include="User.cs" />
+    <Page Include="GetTokenWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

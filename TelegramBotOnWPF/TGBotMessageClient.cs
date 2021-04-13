@@ -40,13 +40,12 @@ namespace TelegramBotOnWPF
         #endregion
 
         #region Конструкторы
-        public TGBotMessageClient(MainWindow w, string pathToken )
+        public TGBotMessageClient(MainWindow w, string token )
         {
             this.w = w;
-            bot = new TelegramBotClient(File.ReadAllText(pathToken));
+            bot = new TelegramBotClient(token);
             users = new ObservableCollection<User>();
             DownLoadUsers();
-
             bot.OnMessage += MessageListener;
 
             bot.StartReceiving();
@@ -54,6 +53,11 @@ namespace TelegramBotOnWPF
         #endregion
 
         #region Методы
+        /// <summary>
+        /// Метод, обрабатывающий сообщение
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="e"></param>
         public void MessageListener(object Sender, Telegram.Bot.Args.MessageEventArgs e)
         {
 
@@ -62,13 +66,6 @@ namespace TelegramBotOnWPF
             Console.WriteLine(text + " - " + e.Message.Type.ToString());
 
             User currentUser = new User(e.Message.Chat.Id, e.Message.Chat.Username, e.Message.Chat.FirstName);
-            //AddUser(currentUser);
-            //SaveUsers();
-            //currentUser.CreateDirectory();
-            //if (UseFile(e, currentUser))
-            //{
-            //    bot.SendTextMessageAsync(currentUser.ChatId, $"{currentUser.Firstname}, ваш файл был успешно загружен!");
-            //}
 
             if (e.Message.Type != Telegram.Bot.Types.Enums.MessageType.Text)
                 return;
@@ -82,14 +79,9 @@ namespace TelegramBotOnWPF
                     bot.SendTextMessageAsync(currentUser.ChatId, $"{currentUser.Firstname}, ваш файл был успешно загружен!");
                 }
 
-
-
-
                 UseText(e, currentUser);
-                //SaveUsers();
 
             });
-           // SaveUsers();
         }
 
         /// <summary>

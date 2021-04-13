@@ -12,7 +12,7 @@
         
     </Window.Resources>
     
-    <Grid ShowGridLines="True" Background="AntiqueWhite">
+    <Grid  Background="AntiqueWhite">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="Auto"/>
@@ -96,5 +96,8 @@
             </TextBox>
             <Button Content="Отправить" Grid.Column="1" Click="Button_Click"/>
         </Grid>
+
+        
     </Grid>
+    
 </Window>
